@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wingo Predictor</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./predicter.css">
+
+  <!-- Socket.IO -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="navbar">
+  <h1>🔮 Wingo Predictor</h1>
+  <div class="nav-links">
+    <a href="./index.html" class="nav-btn">📊 Dashboard</a>
+    <a href="./predicter.html" class="nav-btn active">🔮 Predictor</a>
+  </div>
+</div>
+
+<!-- ===== PREDICTION CARDS ===== -->
+<div class="prediction-section">
+  <h2>Next Prediction</h2>
+  
+  <div class="prediction-cards">
+    <div class="prediction-card number-pred">
+      <h3>Next Number</h3>
+      <div class="pred-value" id="predNumber">--</div>
+      <div class="pred-confidence">
+        Confidence: <span id="numConfidence">0</span>%
+      </div>
+      <div class="pred-top-numbers">
+        <p><strong>Top 3 Likely:</strong></p>
+        <ul id="topNumbers"></ul>
+      </div>
+    </div>
+
+    <div class="prediction-card color-pred">
+      <h3>Next Color</h3>
+      <div class="pred-value color" id="predColor">--</div>
+      <div class="pred-confidence">
+        Confidence: <span id="colorConfidence">0</span>%
+      </div>
+      <div class="pred-probabilities">
+        <p><strong>Probabilities:</strong></p>
+        <div class="prob-bar">
+          <span>🟢 Green:</span>
+          <div class="bar">
+            <div class="fill green" id="greenProb"></div>
+          </div>
+          <span id="greenPercent">0%</span>
+        </div>
+        <div class="prob-bar">
+          <span>🔴 Red:</span>
+          <div class="bar">
+            <div class="fill red" id="redProb"></div>
+          </div>
+          <span id="redPercent">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prediction-card size-pred">
+      <h3>Next Size</h3>
+      <div class="pred-value size" id="predSize">--</div>
+      <div class="pred-confidence">
+        Confidence: <span id="sizeConfidence">0</span>%
+      </div>
+      <div class="pred-probabilities">
+        <p><strong>Probabilities:</strong></p>
+        <div class="prob-bar">
+          <span>📈 Big:</span>
+          <div class="bar">
+            <div class="fill big" id="bigProb"></div>
+          </div>
+          <span id="bigPercent">0%</span>
+        </div>
+        <div class="prob-bar">
+          <span>📉 Small:</span>
+          <div class="bar">
+            <div class="fill small" id="smallProb"></div>
+          </div>
+          <span id="smallPercent">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STATISTICS SECTION ===== -->
+<div class="stats-section">
+  <h2>Statistical Analysis</h2>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <h4>Most Frequent Number</h4>
+      <div class="stat-value" id="freqNumber">--</div>
+      <small id="freqNumberCount">0 times</small>
+    </div>
+
+    <div class="stat-box">
+      <h4>Least Frequent Number</h4>
+      <div class="stat-value" id="rareNumber">--</div>
+      <small id="rareNumberCount">0 times</small>
+    </div>
+
+    <div class="stat-box">
+      <h4>Most Likely Color</h4>
+      <div class="stat-value" id="freqColor">--</div>
+      <small id="freqColorCount">0 times</small>
+    </div>
+
+    <div class="stat-box">
+      <h4>Winning Streak</h4>
+      <div class="stat-value" id="winStreak">0</div>
+      <small id="streakColor">--</small>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CHARTS ===== -->
+<div class="charts">
+  <div class="chart-box">
+    <h3>Number Distribution (Last 20)</h3>
+    <canvas id="predictionChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Pattern Analysis</h3>
+    <canvas id="patternChart"></canvas>
+  </div>
+</div>
+
+<!-- ===== RECENT RESULTS ===== -->
+<div class="recent-section">
+  <h2>Recent Results (Last 20)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Number</th>
+        <th>Color</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody id="recentTable"></tbody>
+  </table>
+</div>
+
+<!-- JS -->
+<script src="./predicter.js"></script>
+
+</body>
+</html>

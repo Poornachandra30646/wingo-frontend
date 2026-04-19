@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wingo Analytics Dashboard</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./index.css">
+
+  <!-- Socket.IO -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="navbar">
+  <h1>📊 Wingo Analytics Dashboard</h1>
+  <div class="nav-links">
+    <a href="./index.html" class="nav-btn active">📊 Dashboard</a>
+    <a href="./predicter.html" class="nav-btn">🔮 Predictor</a>
+  </div>
+</div>
+
+<!-- ===== TOP CARDS ===== -->
+<div class="cards">
+  <div class="card">Total Records: <span id="total">0</span></div>
+  <div class="card">Big: <span id="big">0</span></div>
+  <div class="card">Small: <span id="small">0</span></div>
+  <div class="card">Green: <span id="green">0</span></div>
+  <div class="card">Red: <span id="red">0</span></div>
+</div>
+
+<!-- ===== DOWNLOAD BUTTON ===== -->
+<button id="downloadBtn">⬇ Download CSV</button>
+
+<!-- ===== CHARTS ===== -->
+<div class="charts">
+  <div class="chart-box">
+    <h3>Number Frequency</h3>
+    <canvas id="numberChart"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <h3>Color Distribution</h3>
+    <canvas id="colorChart"></canvas>
+  </div>
+</div>
+
+<!-- ===== TABLE ===== -->
+<h3>Live Data</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Issue</th>
+      <th>Number</th>
+      <th>Color</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+
+  <tbody id="tbody"></tbody>
+</table>
+
+<!-- JS (VERY IMPORTANT: keep at bottom) -->
+<script src="./script.js"></script>
+
+</body>
+</html>
