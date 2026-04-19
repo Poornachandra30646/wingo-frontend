@@ -1,5 +1,5 @@
 // ==================== CONFIG ====================
-const SERVER_URL = "http://localhost:3000";
+const SERVER_URL = "https://wingo-backend-btaj.onrender.com";
 const socket = io(SERVER_URL);
 
 // ==================== STATE ====================
